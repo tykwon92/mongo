@@ -4,8 +4,8 @@ const app = express();
 const port = 3000;
 app.use(express.static(__dirname + '/public/'))
 
-mongoose.connect('mongodb://localhost:27017//portfolio',
-{ useNewUrlParser: true },
+mongoose.connect('mongodb://localhost:27017/portfolio',
+    { useNewUrlParser: true, useUnifiedTopology: true },
     () => console.log('DB connected')
 );
 
@@ -22,10 +22,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/add', (req, res) => {
-const myData = new Contact(req.body);
-console.log(myData);
+    const myData = new Contact(req.body);
+    console.log(myData);
 });
-
 
 
 app.listen(port,
